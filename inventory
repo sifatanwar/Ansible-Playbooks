@@ -1,0 +1,17 @@
+[all]
+web1 ansible_ssh_host=user1@192.168.56.101
+web2 ansible_ssh_host=user1@192.168.56.102
+db1 ansible_ssh_host=user1@192.168.56.103
+db2 ansible_ssh_host=user1@192.168.56.104
+
+[web]
+web1
+web2
+
+[db]
+db1
+db2
+
+[backup]
+db2
+

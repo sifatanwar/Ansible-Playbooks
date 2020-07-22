@@ -1,0 +1,33 @@
+# This denotes start of playbook
+--- 
+
+# Ansible playbooks contains a list of plays 
+# Each play start with this list item 
+- hosts: all
+  # Start of list of tasks
+  tasks:
+  - name: create a file on a remote machine
+    file:
+      dest: ./file
+      state: '{{file_state}}'
+
+- hosts: web
+  tasks:
+  - name: create file on web file on web machine
+    file:
+      dest: ./web-file
+      state: '{{file_state}}'
+
+- hosts: all:!db
+  tasks:
+  - name: create file on all web machines
+    file:
+      dest: ./web-not-db-file
+      state: '{{file_state}}'
+
+- hosts: all:&backup:!web
+  tasks:
+  - name: create file on all web machines
+    file:
+      dest: ./backup-file
+      state: '{{file_state}}'
